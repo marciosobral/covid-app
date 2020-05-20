@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    touch-callout: none;
+    user-select: none;
+    background-size: 100%;
+}
+
+.container{
+    min-width: 960px;
+    margin: 0 auto;
+}
+
+
+h1{
+    background-color: #B22222;
+    font-family: helvetica, arial;
+    height: 55px;
+    text-align: center;
+    line-height: 1.8;
+}
+button{
+    color: white;
+    border: 1px solid pink;
+    border-radius: 29px;
+    cursor: pointer;
+    text-shadow: 3px 3px 3px black;
+    font-size: 30px;
+    background-color: black;
+    padding: 10px;
+    text-decoration: none;
+    font-family: helvetica, arial;
+    position: absolute;
+    left: 90%;
+    top: 0%;
+}
+
+button:hover{
+    font-family: helvetica, arial;
+    font-size: 30px;
+    background-color: black;
+    color: #8B0000;
+    text-shadow: 3px 3px 3px white;
+    border: 1px solid #FF8C00;
+    border-radius: 29px;
+}
+
+.dois{
+    font-family: helvetica, arial;
+    pading: 20px;
+    font-size: 40px;
+    color: #B22222;
+    text-shadow: 3px 3px 3px black;
+}
+
+table{
+    text-align: center;
+}
+
+.outro{
+    background-color: grey;
+}
+
+.outro2{
+    position: absolute;
+    left: 10%;
+    background-color: grey;
+}
+
+#p1{
+    background-color: grey;
+    text-align: center;
+    font-family: helvetica, arial;
+    font-size: 40px;
+    color: #B22222;
+    padding: 20px;
+    text-shadow: 3px 3px 3px black;
+}
+
+#grafico{
+    background-color: grey;
+    text-align: center;
+    height: 380px;
+}
+
+footer{
+    color: #B22222;
+    background-color: #D3D3D3;
+    font-family: helvetica, arial;
+    font-size: 30px;
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+}
