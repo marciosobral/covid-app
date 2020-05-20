@@ -1,1 +1,1 @@
-"# projeto-javascript" 
+Aplicativo feito através do framework Django.
