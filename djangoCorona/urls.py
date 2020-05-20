@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from CoronaApp.views import mensagem
+from CoronaApp.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', mensagem),
+    path('home',home),
 ]
