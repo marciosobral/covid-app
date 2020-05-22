@@ -1,43 +1,47 @@
 from django.shortcuts import render
-import requests
+import requests, json
 from bs4 import BeautifulSoup
 import matplotlib.pyplot as plt
 
+
 def home(request):
+    dia_count = 0
+    casos = []
     info = {}
+    data = []
 
     url = "https://www.worldometers.info/coronavirus/country/brazil/"
-    url2 = "https://www.ibge.gov.br/explica/desemprego.php"
+    url2 = "https://api.covid19api.com/all"
 
     html = requests.get(url)
-    html2 = requests.get(url2)
+
+    payload = {}
+    headers = {}
+
+    response = requests.request("GET", url2, headers=headers, data=payload)
+
+    daily = json.loads(response.content)
 
     bs = BeautifulSoup(html.content, 'html.parser')
-    bs2 = BeautifulSoup(html2.content, 'html.parser')
 
-    taxa_desemprego = bs2.find_all('p', class_='variavel-dado')[2].get_text()
     casos_totais = bs.find_all('div', class_='maincounter-number')[0].get_text()
     mortes_totais = bs.find_all('div', class_='maincounter-number')[1].get_text()
     recuperados = bs.find_all('div', class_='maincounter-number')[2].get_text()
 
-    casos_ativos = bs.find_all('div', class_='number-table-main')[0].get_text()
-    casos_leves = bs.find_all('span', class_='number-table')[0].get_text()
-    casos_graves = bs.find_all('span', class_='number-table')[1].get_text()
-
-    info['taxadesemprego'] = taxa_desemprego
     info['casostotais'] = casos_totais
     info['mortestotais'] = mortes_totais
     info['recuperados'] = recuperados
-    info['casosativos'] = casos_ativos
-    info['casosleves'] = casos_leves
-    info['casosgraves'] = casos_graves
 
-    y_pos = list(range(len(casos_totais)))
-    plt.bar(y_pos, taxa_desemprego[::-1], align='center', alpha=0.5)
-    plt.xticks(y_pos, casos_totais[::-1], rotation=70)
-    plt.ylabel('Total cases')
-    plt.title('Persons affected by Corona virus')
-    plt.savefig('Corona-analysis.png', dpi=600)
-    plt.show()
+    for dados in daily:
+        if dados['Country'] == "Brazil":
+            casos.append(dados['Confirmed'])
+            dia_count = dia_count + 1
+            data.append(dia_count)
 
+    plt.ylabel('Casos totais')
+    plt.xticks(fontsize=10, rotation=45)
+    plt.title('Covid19 Brazil')
+    plt.plot(data, casos)
+
+    plt.savefig('CoronaApp/static/CoronaApp/image/covidgraph.png', dpi=120)
     return render(request, 'CoronaApp/Piloto.html', info)
