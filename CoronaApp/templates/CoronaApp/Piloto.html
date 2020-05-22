@@ -1,9 +1,12 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="pt">
     <head>
         <meta charset="UTF-8">
         <title>Covid-19/Desemprego</title>
-        <link rel="stylesheet" type="text/css" href="piloto.css">
+        <link rel="shortcut icon" type='image/png' href="{% static 'CoronaApp/favicon/favicon.ico' %}">
+        <link rel="stylesheet" href="{% static 'CoronaApp/css/piloto.css' %}">
+        <script src="{% static 'CoronaApp/js/piloto.js' %}"></script>
     </head>
 
     <body>
@@ -31,10 +34,10 @@
                         </th>
                     </tr>
                     <td>
-                        <b style="color:black; font-size: 40px;">255.368</b>
+                        <b style="color:black; font-size: 40px;">{{ casostotais }}</b>
                     </td>
                     <td>
-                        <b style="color:black; font-size: 40px;">16.586</b>
+                        <b style="color:black; font-size: 40px;">{{ mortestotais }}</b>
                     </td>
                     <td>
                         <b style="color:black; font-size: 40px;">11,2%</b>
@@ -50,7 +53,7 @@
             </div>
 
             <div id="grafico">
-                <img src ="serap_tet.png">
+                <img src ="{% static 'CoronaApp/image/serap_tet.png' %}">
             </div>
 
             <footer>
