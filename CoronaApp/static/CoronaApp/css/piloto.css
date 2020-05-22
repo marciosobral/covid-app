@@ -5,12 +5,15 @@
 
 html{
     height: 100%;
+    font-family: helvetica, arial;
 }
 
 body{
+    max-width: 100%;
     touch-callout: none;
     user-select: none;
     background-size: 100%;
+    background-color: #E8E8E8;
 }
 
 .container{
@@ -20,81 +23,67 @@ body{
 
 
 h1{
-    background-color: #B22222;
-    font-family: helvetica, arial;
+    background-color: #ff6347;
+    color: white;
     height: 55px;
     text-align: center;
     line-height: 1.8;
 }
+
 button{
     color: white;
-    border: 1px solid pink;
-    border-radius: 29px;
     cursor: pointer;
-    text-shadow: 3px 3px 3px black;
     font-size: 30px;
-    background-color: black;
+    background-color: #ff4040;
     padding: 10px;
     text-decoration: none;
-    font-family: helvetica, arial;
     position: absolute;
-    left: 90%;
+    right: 0%;
     top: 0%;
+    border: 0px solid #000000;
+    transition: filter 0.2s;
+
 }
 
 button:hover{
-    font-family: helvetica, arial;
-    font-size: 30px;
-    background-color: black;
-    color: #8B0000;
-    text-shadow: 3px 3px 3px white;
-    border: 1px solid #FF8C00;
-    border-radius: 29px;
+    filter: brightness(90%);
 }
 
 .dois{
-    font-family: helvetica, arial;
-    pading: 20px;
+    padding: 20px;
     font-size: 40px;
     color: #B22222;
-    text-shadow: 3px 3px 3px black;
 }
 
 table{
     text-align: center;
 }
 
-.outro{
-    background-color: grey;
-}
-
 .outro2{
     position: absolute;
-    left: 10%;
-    background-color: grey;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 #p1{
-    background-color: grey;
     text-align: center;
-    font-family: helvetica, arial;
     font-size: 40px;
-    color: #B22222;
+    color: #474A51;
     padding: 20px;
-    text-shadow: 3px 3px 3px black;
 }
 
 #grafico{
-    background-color: grey;
     text-align: center;
     height: 380px;
 }
 
 footer{
-    color: #B22222;
-    background-color: #D3D3D3;
-    font-family: helvetica, arial;
-    font-size: 30px;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    color: #474A51;
+    background: #d3d3d3;
+    font-size: 20px;
     text-align: center;
-    text-shadow: 2px 2px 2px black;
 }

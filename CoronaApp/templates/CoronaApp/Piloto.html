@@ -3,7 +3,7 @@
 <html lang="pt">
     <head>
         <meta charset="UTF-8">
-        <title>Covid-19/Desemprego</title>
+        <title>Covid-19/Brasil</title>
         <link rel="shortcut icon" type='image/png' href="{% static 'CoronaApp/favicon/favicon.ico' %}">
         <link rel="stylesheet" href="{% static 'CoronaApp/css/piloto.css' %}">
         <script src="{% static 'CoronaApp/js/piloto.js' %}"></script>
@@ -13,37 +13,36 @@
         <div class="container">
 
             <div id="title">
-                <h1>AUMENTO DE DESEMPREGO COM RELAÇÃO A COVID-19 NO BRASIL</h1> <button>FAQ</button>
+                <h1 style="text-align: left; position: absolute; top:0 %; left: 10px;">Covid19 Brasil</h1>
+                <h1>Comparações sociais e econômicas</h1> <button>FAQ</button>
             </div>
 
-            <div class="outro">
-                <br><br><br><br><br>
-            </div>
 
-            <div class="outro2">
+            <div class="outro2" style="float:center;">
                 <table>
                     <tr class="dois">
                         <th>
-                            <b class="b1">Casos Confirmados</b><b style="color:black;"> |</b>
+                            <b class="b1" style="color: #474a51">Casos Totais</b><b style="color:black;"> |</b>
                         </th>
                         <th>
-                            <b class="b2">Mortes Confirmadas</b><b style="color:black;"> |</b>
+                            <b class="b2" style="color:black">Mortes</b><b style="color:black;"> |  </b>
                         </th>
                         <th>
-                            <b class="b3">Taxa de Desemprego</b>
+                            <b class="b3" style="color:green">Recuperados</b><b style="color:black;"> |  </b>
                         </th>
                     </tr>
                     <td>
-                        <b style="color:black; font-size: 40px;">{{ casostotais }}</b>
+                        <b style="color:#474a51; font-size: 40px;">{{ casostotais }}</b>
                     </td>
                     <td>
                         <b style="color:black; font-size: 40px;">{{ mortestotais }}</b>
                     </td>
                     <td>
-                        <b style="color:black; font-size: 40px;">11,2%</b>
+                        <b style="color:#474a51; font-size: 40px;">{{ recuperados }}</b>
                     </td>
                 </table>
             </div>
+
             <div class="outro">
                 <br><br><br><br><br><br><br><br>
             </div>
@@ -53,13 +52,12 @@
             </div>
 
             <div id="grafico">
-                <img src ="{% static 'CoronaApp/image/serap_tet.png' %}">
+                <p>GRAFICO</p>
             </div>
 
-            <footer>
-                Desenvolvido por Murillo Marques, Guilherme Inaba e Márcio Paulo
-            </footer>
-
         </div>
+        <footer>
+                Desenvolvido por Murillo Marques, Guilherme Inaba e Márcio Paulo
+        </footer>
     </body>
 </html>
