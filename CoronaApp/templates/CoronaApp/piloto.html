@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <title>Covid-19/Brasil</title>
+        <link rel="shortcut icon" type='image/png' href="{% static 'CoronaApp/favicon/favicon.ico' %}">
+        <link rel="stylesheet" href="{% static 'CoronaApp/css/piloto.css' %}">
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div id="title">
+                <h1 style="text-align: left; position: absolute; top:0 %; left: 10px;">Covid19 Brasil</h1>
+                <h1>Comparações sociais e econômicas</h1> <button>FAQ</button>
+            </div>
+
+            <br><br><br>
+            <div class="outro2" style="float:center;">
+                <table>
+                    <tr class="dois">
+                        <th>
+                            <b class="b1" style="color: #474a51">Casos Totais</b><b style="color:black;"></b>
+                        </th>
+                        <th>
+                            <b class="b2" style="color:black">Mortes</b><b style="color:black;"></b>
+                        </th>
+                        <th>
+                            <b class="b3" style="color:green">Recuperados</b><b style="color:black;"></b>
+                        </th>
+                    </tr>
+                    <td>
+                        <b style="color:#474a51; font-size: 40px;">{{ casostotais }}</b>
+                    </td>
+                    <td>
+                        <b style="color:black; font-size: 40px;">{{ mortestotais }}</b>
+                    </td>
+                    <td>
+                        <b style="color:#474a51; font-size: 40px;">{{ recuperados }}</b>
+                    </td>
+                </table>
+            </div>
+
+            <div class="outro">
+                <br><br><br><br><br><br><br><br>
+            </div>
+            <br><br><br>
+            <div>
+                <p id="p1">Gráfico de casos da COVID19 no Brasil após o primeiro caso</p>
+            </div>
+                <div id="nada" style="width: 75%; margin-left: auto; margin-right: auto;">
+                    <canvas id="line-chart"></canvas>
+                </div>
+            <br><br><br>
+
+        </div>
+        <footer>
+                Desenvolvido por Murillo Marques, Guilherme Inaba e Márcio Paulo
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script><script>
+
+    var config = {
+      type: 'line',
+      data: {
+        datasets: [{
+          data: {{ confirmados_tl|safe }},
+          backgroundColor: "rgba(225, 16, 31, 0.1)",
+          borderColor: "#E1101F",
+          borderWidth: 1,
+          label: 'Confirmados'
+        },
+        {
+          data: {{ mortestotais_tl|safe }},
+          backgroundColor: "rgba(53, 53, 53, 0.3)",
+          borderColor: "#353535",
+          borderWidth: 1,
+          label: 'Mortes'
+        },
+        {
+          data: {{ recuperados_tl|safe }},
+          backgroundColor: "rgba(97, 183, 84, 0.1)",
+          borderColor: "#61B754",
+          borderWidth: 1,
+          label: 'Recuperados'
+        },
+        {
+          data: {{ ativos_tl|safe }},
+          backgroundColor: "rgba(106, 120, 181, 0.1)",
+          borderColor: "#6A78B5",
+          borderWidth: 1,
+          label: 'Ativos'
+        }],
+        labels: {{ labels|safe }}
+      },
+      options: {
+        responsive: true
+      }
+    };
+
+    window.onload = function() {
+      var ctx = document.getElementById('line-chart').getContext('2d');
+      window.myChart = new Chart(ctx, config);
+    };
+
+        </script>
+    </body>
+</html>

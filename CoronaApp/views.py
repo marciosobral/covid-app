@@ -1,47 +1,45 @@
 from django.shortcuts import render
 import requests, json
-from bs4 import BeautifulSoup
-import matplotlib.pyplot as plt
 
 
 def home(request):
-    dia_count = 0
-    casos = []
+    labels = []
+    confirmados_tl = []
+    mortestotais_tl = []
+    recuperados_tl = []
+    ativos_tl = []
     info = {}
-    data = []
-
-    url = "https://www.worldometers.info/coronavirus/country/brazil/"
-    url2 = "https://api.covid19api.com/all"
-
-    html = requests.get(url)
-
     payload = {}
     headers = {}
 
-    response = requests.request("GET", url2, headers=headers, data=payload)
+    urlbrasil = "https://api.covid19api.com/total/dayone/country/brazil"
 
-    daily = json.loads(response.content)
+    html = requests.request("GET", urlbrasil, headers=headers, data=payload)
 
-    bs = BeautifulSoup(html.content, 'html.parser')
+    brasil = json.loads(html.content)
 
-    casos_totais = bs.find_all('div', class_='maincounter-number')[0].get_text()
-    mortes_totais = bs.find_all('div', class_='maincounter-number')[1].get_text()
-    recuperados = bs.find_all('div', class_='maincounter-number')[2].get_text()
+    for dados in brasil:
+        confirmados_tl.append(dados['Confirmed'])
+        mortestotais_tl.append(dados['Deaths'])
+        recuperados_tl.append(dados['Recovered'])
+        ativos_tl.append(dados['Active'])
+        dt = dados['Date'].split("T")[0]
+        ano = dt.split("-")[0]
+        mes = dt.split("-")[1]
+        dia = dt.split("-")[2]
+        fim = dia + "/" + mes + "/" + ano
+        labels.append(fim)
 
-    info['casostotais'] = casos_totais
-    info['mortestotais'] = mortes_totais
-    info['recuperados'] = recuperados
+    info['labels'] = labels
+    info['confirmados_tl'] = confirmados_tl
+    info['mortestotais_tl'] = mortestotais_tl
+    info['recuperados_tl'] = recuperados_tl
+    info['ativos_tl'] = ativos_tl
+    info['casostotais'] = confirmados_tl[-1]
+    info['mortestotais'] = mortestotais_tl[-1]
+    info['recuperados'] = recuperados_tl[-1]
 
-    for dados in daily:
-        if dados['Country'] == "Brazil":
-            casos.append(dados['Confirmed'])
-            dia_count = dia_count + 1
-            data.append(dia_count)
+    return render(request, 'CoronaApp/piloto.html', info)
 
-    plt.ylabel('Casos totais')
-    plt.xticks(fontsize=10, rotation=45)
-    plt.title('Covid19 Brazil')
-    plt.plot(data, casos)
 
-    plt.savefig('CoronaApp/static/CoronaApp/image/covidgraph.png', dpi=120)
-    return render(request, 'CoronaApp/Piloto.html', info)
+
