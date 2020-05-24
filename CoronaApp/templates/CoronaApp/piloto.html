@@ -18,26 +18,32 @@
 
             <br><br><br>
             <div class="outro2" style="float:center;">
-                <table>
+                <table cellspacing="20">
                     <tr class="dois">
                         <th>
-                            <b class="b1" style="color: #474a51">Casos Totais</b><b style="color:black;"></b>
+                            <b class="b1" style="color: #474a51">Confirmados</b><b style="color:black;"></b>
+                        </th>
+                        <th>
+                            <b class="b3" style="color:blue">Ativos</b><b style="color:black;"></b>
+                        </th>
+                        <th>
+                            <b class="b3" style="color: #47b65f">Recuperados</b><b style="color:black;"></b>
                         </th>
                         <th>
                             <b class="b2" style="color:black">Mortes</b><b style="color:black;"></b>
-                        </th>
-                        <th>
-                            <b class="b3" style="color:green">Recuperados</b><b style="color:black;"></b>
                         </th>
                     </tr>
                     <td>
                         <b style="color:#474a51; font-size: 40px;">{{ casostotais }}</b>
                     </td>
                     <td>
-                        <b style="color:black; font-size: 40px;">{{ mortestotais }}</b>
+                        <b style="color:#5b7fff; font-size: 40px;">{{ ativos }}</b>
                     </td>
                     <td>
-                        <b style="color:#474a51; font-size: 40px;">{{ recuperados }}</b>
+                        <b style="color:#75ff66; font-size: 40px;">{{ recuperados }}</b>
+                    </td>
+                    <td>
+                        <b style="color:#474a51; font-size: 40px;">{{ mortestotais }}</b>
                     </td>
                 </table>
             </div>
@@ -47,7 +53,7 @@
             </div>
             <br><br><br>
             <div>
-                <p id="p1">Gráfico de casos da COVID19 no Brasil após o primeiro caso</p>
+                <p id="p1">Gráfico de casos da COVID19 no Brasil desde o primeiro caso</p>
             </div>
                 <div id="nada" style="width: 75%; margin-left: auto; margin-right: auto;">
                     <canvas id="line-chart"></canvas>

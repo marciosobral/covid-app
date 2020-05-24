@@ -38,6 +38,7 @@ def home(request):
     info['casostotais'] = confirmados_tl[-1]
     info['mortestotais'] = mortestotais_tl[-1]
     info['recuperados'] = recuperados_tl[-1]
+    info['ativos'] = ativos_tl[-1]
 
     return render(request, 'CoronaApp/piloto.html', info)
 
