@@ -7,8 +7,11 @@ chardet==3.0.4
 colorama==0.4.3
 cycler==0.10.0
 decorator==4.4.2
+dj-database-url==0.5.0
 Django==3.0.6
+django-heroku==0.3.1
 graphviz==0.13.2
+gunicorn==20.0.4
 idna==2.9
 ipython==7.13.0
 ipython-genutils==0.2.0
@@ -27,6 +30,7 @@ parso==0.6.2
 pickleshare==0.7.5
 plumber==1.5
 prompt-toolkit==3.0.5
+psycopg2==2.8.5
 pydot==1.4.1
 pydotplus==2.0.2
 Pygments==2.6.1
@@ -43,6 +47,7 @@ sqlparse==0.3.1
 traitlets==4.3.3
 urllib3==1.25.9
 wcwidth==0.1.9
+whitenoise==5.1.0
 zope.component==4.6.1
 zope.deferredimport==4.3.1
 zope.deprecation==4.4.0
