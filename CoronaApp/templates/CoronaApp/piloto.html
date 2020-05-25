@@ -13,7 +13,7 @@
 
             <div id="title">
                 <h1 style="text-align: left; position: absolute; top:0 %; left: 10px;">Covid19 Brasil</h1>
-                <h1>Comparações sociais e econômicas</h1>
+                <h1 style="text-align: center;">Stats</h1>
                 <form method="get" action="/faq">
                      <button type="submit">FAQ</button>
                 </form>
@@ -24,7 +24,7 @@
                 <table cellspacing="30">
                     <tr class="dois">
                         <th>
-                            <b class="b1" style="color: #474a51">Confirmados</b><b style="color:black;"></b>
+                            <b class="b1" style="color: #E1101F">Confirmados</b><b style="color:black;"></b>
                         </th>
                         <th>
                             <b class="b3" style="color: #5b7fff">Ativos</b><b style="color:black;"></b>
@@ -37,7 +37,7 @@
                         </th>
                     </tr>
                     <td>
-                        <b style="color:#474a51; font-size: 40px;">{{ casostotais }}</b>
+                        <b style="color:#E1101F; font-size: 40px;">{{ casostotais }}</b>
                     </td>
                     <td>
                         <b style="color:#5b7fff; font-size: 40px;">{{ ativos }}</b>
@@ -61,8 +61,10 @@
                 <div id="nada" style="width: 75%; margin-left: auto; margin-right: auto;">
                     <canvas id="line-chart"></canvas>
                 </div>
+            <div>
+                <p style="text-align: center; font-size: 30px; color: #474A51; padding: 20px;">Última atualização em: {{ lastupdate }}</p>
+            </div>
             <br><br><br>
-
         </div>
         <footer>
                 Desenvolvido por Murillo Marques, Guilherme Inaba e Márcio Paulo
@@ -81,11 +83,11 @@
           label: 'Confirmados'
         },
         {
-          data: {{ mortestotais_tl|safe }},
-          backgroundColor: "rgba(53, 53, 53, 0.3)",
-          borderColor: "#353535",
+          data: {{ ativos_tl|safe }},
+          backgroundColor: "rgba(106, 120, 181, 0.1)",
+          borderColor: "#6A78B5",
           borderWidth: 1,
-          label: 'Mortes'
+          label: 'Ativos'
         },
         {
           data: {{ recuperados_tl|safe }},
@@ -95,11 +97,11 @@
           label: 'Recuperados'
         },
         {
-          data: {{ ativos_tl|safe }},
-          backgroundColor: "rgba(106, 120, 181, 0.1)",
-          borderColor: "#6A78B5",
+          data: {{ mortestotais_tl|safe }},
+          backgroundColor: "rgba(53, 53, 53, 0.3)",
+          borderColor: "#353535",
           borderWidth: 1,
-          label: 'Ativos'
+          label: 'Mortes'
         }],
         labels: {{ labels|safe }}
       },
