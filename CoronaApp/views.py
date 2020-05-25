@@ -43,4 +43,5 @@ def home(request):
     return render(request, 'CoronaApp/piloto.html', info)
 
 
-
+def faq(request):
+    return render(request, 'CoronaApp/faq.html')
